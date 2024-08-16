@@ -13,7 +13,7 @@ const LeftSideBar = () => {
     }
 
   return (
-    <div className='w-56 h-[30rem] border rounded-lg p-4 hidden lg:flex flex-col gap-4'>
+    <div className='w-56 h-[34rem] border rounded-lg p-4 hidden lg:flex flex-col gap-4'>
         {
         MenuItems.map((item,idx)=>{
             return (

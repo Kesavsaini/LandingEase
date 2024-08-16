@@ -11,7 +11,7 @@ import ImageSizeSlider from "./ImageSizeSlider";
 const CreateHeroSection = () => {
   const {
     logo: { isLogo, src: logoSrc },
-    image: { isImage, src: ImageSrc },
+    image: { isImage, src: ImageSrc,size:imgSize },
     bigText: { color: bigTextColor },
     smallText: { color: smallTextColor },
     backGroundImage: { isBackGroundImage, backGroundColor },
@@ -37,6 +37,7 @@ const CreateHeroSection = () => {
             className="justify-between"
             id="logoImage"
             section="logo"
+             sectionType="hero"
           />
         </>
       )}
@@ -112,8 +113,9 @@ const CreateHeroSection = () => {
             className="justify-between"
             id="sideImage"
             section="image"
+            sectionType="hero"
           />
-          <ImageSizeSlider section="image" datakey="size"/>
+          <ImageSizeSlider section="image" datakey="size" sectionType="hero" defaultValue={imgSize}/>
         </>
       )}
       <ColorPicker
@@ -148,6 +150,7 @@ const CreateHeroSection = () => {
             className="justify-between"
             id="herobackGroundImage"
             section="backGroundImage"
+            sectionType="hero"
           />
         </>
       )}

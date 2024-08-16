@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import { themes } from './lib/ThemesArray'
+import defaultTheme from 'tailwindcss/defaultTheme'
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -10,9 +12,13 @@ module.exports = {
   ],
   prefix: "",
   daisyui: {
-    themes: ["light"],
+    themes:themes,
   },
   theme: {
+    screens: {
+      "xxs":"364px",
+      ...defaultTheme.screens
+    },
     container: {
       center: true,
       padding: "2rem",

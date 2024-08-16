@@ -4,15 +4,26 @@ import { Label } from "@/components/ui/label"
 import { getBase64 } from "@/lib/utilsFn";
 import { UploadIcon } from "@radix-ui/react-icons"
 import { useDispatch } from "react-redux";
-import { updateHero } from "@/lib/features/landingPage/pageSlice";
+import { updateHero,updateFeatureSection } from "@/lib/features/landingPage/pageSlice";
 
-export function FileInput({title,className,id,section}) {
+export function FileInput({title,className,id,section,sectionType,upperSection}) {
      const dispatch = useDispatch();
      const handleFileInputChange =async e => {
          const base64=await getBase64(e.target.files[0]);
-         dispatch(
-            updateHero({ section, key: "src", value: base64 })
+         switch (sectionType) {
+          case "hero":
+            dispatch(
+              updateHero({ section, key: "src", value: base64 })
+            );
+            break;
+         case "feature":
+          dispatch(
+            updateFeatureSection({ feature:upperSection, section, key: "src", value: base64 })
           );
+          default:
+            break;
+         }
+         
       };
   return (
     <div className={`flex w-full max-w-sm items-center gap-1.5 ${className}`}>
