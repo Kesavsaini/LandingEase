@@ -1,7 +1,10 @@
 {
     "title":{
         "content":"Enter Your Title here",
-         "color":"#0000000"
+         "color":"none"
+    },
+    "background":{
+       "color":"none"
     },
     "cards":[]
 }

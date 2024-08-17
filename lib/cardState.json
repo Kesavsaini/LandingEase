@@ -1,15 +1,22 @@
 {   
     "image":{
         "isImage":true,
+        "isBottom":false,
          "src":"https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-gaming-headset-clipart-cartoon-gaming-headphone-isolated-on-white-background-free-png-image_6870025.png",
          "size":60
       },
     "title":{
         "content":"Enter Your Title here",
-        "color":"#0000000"
+        "color":"none"
      },
      "description":{
          "content":"Enter Your Description here",
-         "color":"#0000000"
+         "color":"none"
+      },
+      "button":{
+        "isButton":true,
+        "content":"Click Me",
+        "color":"none",
+        "link":"#"
       }
 }

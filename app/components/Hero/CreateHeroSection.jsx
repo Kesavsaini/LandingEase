@@ -2,11 +2,11 @@ import React from "react";
 import { Switch } from "@/components/ui/switch";
 import { useSelector, useDispatch } from "react-redux";
 import { updateHero } from "@/lib/features/landingPage/pageSlice";
-import { FileInput } from "./FileInput";
+import { FileInput } from "../FileInput";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import ColorPicker from "./ColorPicker";
-import ImageSizeSlider from "./ImageSizeSlider";
+import ColorPicker from "../ColorPicker";
+import ImageSizeSlider from "../ImageSizeSlider";
 
 const CreateHeroSection = () => {
   const {
@@ -68,6 +68,15 @@ const CreateHeroSection = () => {
             })
           );
         }}
+        onThemeSelect={()=>{
+          dispatch(
+            updateHero({
+              section: "bigText",
+              key: "color",
+              value: "none",
+            })
+          );
+        }}
       />
       <Textarea
         placeholder="Enter Hero description here..."
@@ -91,6 +100,15 @@ const CreateHeroSection = () => {
               section: "smallText",
               key: "color",
               value: e.target.value,
+            })
+          );
+        }}
+        onThemeSelect={()=>{
+          dispatch(
+            updateHero({
+              section: "smallText",
+              key: "color",
+              value: "none",
             })
           );
         }}
@@ -128,6 +146,15 @@ const CreateHeroSection = () => {
               section: "backGroundImage",
               key: "backGroundColor",
               value: e.target.value,
+            })
+          );
+        }}
+        onThemeSelect={()=>{
+          dispatch(
+            updateHero({
+              section: "backGroundImage",
+              key: "backGroundColor",
+              value: "none",
             })
           );
         }}

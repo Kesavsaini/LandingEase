@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
-import Hero from './Hero'
+import Hero from './Hero/Hero'
 import { useSelector } from 'react-redux';
-import FeaturePreview from './FeaturePreview';
+import FeaturePreview from './Feature/FeaturePreview';
 
 const DekstopView = () => {
   const allSections = useSelector((state) => state.page);

@@ -9,11 +9,11 @@ import {
 import { Button } from '@/components/ui/button'
 
   
-const SelectFrom = ({list,onButtonClick,buttonContent,onValueChange,value}) => {
+const SelectFrom = ({list,onButtonClick,buttonContent,onValueChange,value,placeholder}) => {
   return (
 <Select  onValueChange={onValueChange} value={value}>
   <SelectTrigger className="w-full">
-    <SelectValue placeholder="Features" />
+    <SelectValue placeholder={placeholder} />
   </SelectTrigger>
   <SelectContent>
     {

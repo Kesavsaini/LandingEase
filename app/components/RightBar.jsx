@@ -1,9 +1,10 @@
 "use client"
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import CreateHeroSection from './CreateHeroSection'
-import CreateFeature from './CreateFeature'
+import CreateHeroSection from './Hero/CreateHeroSection'
+import CreateFeature from './Feature/CreateFeature'
 import { Button } from '@/components/ui/button'
+import CreateCardSection from './Card/CreateCardSection'
 
 
 const RightBar = () => {
@@ -20,6 +21,9 @@ const RightBar = () => {
     </TabsContent>
     <TabsContent value="feature" className="w-full flex flex-col justify-center items-center">
       <CreateFeature/>
+    </TabsContent>
+    <TabsContent value="cards" className="w-full flex flex-col justify-center items-center">
+      <CreateCardSection/>
     </TabsContent>
   </Tabs>
   
