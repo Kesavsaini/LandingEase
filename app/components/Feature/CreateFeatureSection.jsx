@@ -141,7 +141,6 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
     </>
   )}
   <MyAlertDialog type="delete" name={"Feature-"+index} onClick={()=>{
-    console.log("Clicked Delete");
     dispatch(deleteFeatureSection(index));
   }}>
   <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-full">Delete section</Button>

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {colorVariants} from '@/lib/tailwindConfig.js'
 
 
-const Hero = ({theme}) => {
+const Hero = ({theme,isMobileView,myRef}) => {
     const{
         logo:{
             isLogo,
@@ -30,11 +30,9 @@ const Hero = ({theme}) => {
             size:imgSize
         }
     } = useSelector((state) => state.page.hero);
-    const view=useSelector(state=>state.other.view);
-    const isMobileView=view==="mobile";
     const isThemeApplied=theme!=="none";
   return (
-    <div className={`w-full ${isMobileView ? "h-[36rem]":"h-[28rem]"}  flex flex-col  ${!isLogo && 'justify-center'} relative`} style={{backgroundColor:backGroundColor!=="none" && backGroundColor,backgroundImage:isBackGroundImage ? `url(${bgImgSrc})`:null,backgroundSize:"cover"}}>
+    <div className={`w-full ${isMobileView ? "h-[36rem]":"h-[28rem]"}  flex flex-col  ${!isLogo && 'justify-center'} relative`} style={{backgroundColor:backGroundColor!=="none" && backGroundColor,backgroundImage:isBackGroundImage ? `url(${bgImgSrc})`:null,backgroundSize:"cover"}} ref={myRef}>
        {isLogo && <div className='w-fit p-0 sm:p-4 h-12 flex items-center absolute top-0 sm:top-4 left-0 scale-50 sm:scale-100'>
         <Image src={logoSrc} width={100} height={50}/>
         </div>

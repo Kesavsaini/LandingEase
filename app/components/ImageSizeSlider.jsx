@@ -1,10 +1,10 @@
 import React from 'react'
 import { Slider } from "@/components/ui/slider"
 import { useDispatch } from "react-redux";
-import { updateFeatureSection, updateHero } from "@/lib/features/landingPage/pageSlice";
+import { updateCard, updateFeatureSection, updateHero } from "@/lib/features/landingPage/pageSlice";
 
 
-const ImageSizeSlider = ({section,datakey,sectionType,upperSection,defaultValue}) => {
+const ImageSizeSlider = ({section,datakey,sectionType,upperSection,defaultValue,index}) => {
     const dispatch = useDispatch();
     const handleChange =value => {
       switch (sectionType) {
@@ -15,6 +15,12 @@ const ImageSizeSlider = ({section,datakey,sectionType,upperSection,defaultValue}
        dispatch(
          updateFeatureSection({ feature:upperSection, section, key:datakey, value: value[0] })
        );
+       break;
+       case "card":
+        dispatch(
+          updateCard({cardsSection:upperSection, section ,index, key:datakey, value:value[0]})
+       );
+       break;
        default:
          break;
       }

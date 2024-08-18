@@ -24,7 +24,7 @@ const MyAlertDialog = ({ children,type,name,onClick }) => {
   return (
     <AlertDialog className="p-4">
   <AlertDialogTrigger className=''>{children}</AlertDialogTrigger>
-  <AlertDialogContent>
+  <AlertDialogContent className="w-72 rounded-lg sm:w-auto">
     <AlertDialogHeader>
       <AlertDialogTitle>{alertType[type].title}</AlertDialogTitle>
       <AlertDialogDescription>

@@ -4,9 +4,9 @@ import { Label } from "@/components/ui/label"
 import { getBase64 } from "@/lib/utilsFn";
 import { UploadIcon } from "@radix-ui/react-icons"
 import { useDispatch } from "react-redux";
-import { updateHero,updateFeatureSection } from "@/lib/features/landingPage/pageSlice";
+import { updateHero,updateFeatureSection, updateCard } from "@/lib/features/landingPage/pageSlice";
 
-export function FileInput({title,className,id,section,sectionType,upperSection}) {
+export function FileInput({title,className,id,section,sectionType,upperSection,index}) {
      const dispatch = useDispatch();
      const handleFileInputChange =async e => {
          const base64=await getBase64(e.target.files[0]);
@@ -20,6 +20,12 @@ export function FileInput({title,className,id,section,sectionType,upperSection})
           dispatch(
             updateFeatureSection({ feature:upperSection, section, key: "src", value: base64 })
           );
+          break;
+          case "card":
+            dispatch(
+              updateCard({cardsSection:upperSection,section,index, key:"src", value:base64 })
+           );
+           break;
           default:
             break;
          }

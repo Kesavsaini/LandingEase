@@ -2,15 +2,13 @@ import Image from 'next/image';
 import React from 'react'
 import { useSelector } from 'react-redux';
 
-const FeaturePreview = ({feature,theme}) => {
+const FeaturePreview = ({feature,theme,isMobileView}) => {
   const {
     image: { isImage, imageOnLeft, src: imgSrc,size:imgSize },
     title: { content: titleContent, color: titleClr },
     description: { content: descriptionContent, color: descriptionClr },
     background: { color: bgClr, isBgImage, src: bgSrc },
   } = feature;
-  const view=useSelector(state=>state.other.view);
-  const isMobileView=(view==="mobile");
   const isThemeApplied=theme!=="none";
   return (
     <div className='h-96 w-full' style={{backgroundColor:bgClr!=="none" && bgClr,backgroundImage:isBgImage ? `url(${bgSrc})`:null,backgroundSize:"cover"}}>
