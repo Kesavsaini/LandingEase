@@ -14,6 +14,8 @@ const getShowValue=(item)=>{
    return "Cards Section "+item.substring(6)
   }else if(item.startsWith('feature')){
      return "Feature " + item.substr(8);
+  }else if(item.startsWith("form")){
+    return "Form " + item.substr(5);
   }
 }
 

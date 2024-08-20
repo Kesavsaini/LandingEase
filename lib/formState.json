@@ -1,0 +1,21 @@
+{
+  "title": {
+    "content": "Contact us",
+    "color": "none"
+  },
+  "description": {
+    "content": "Contact us any time ",
+    "color": "none"
+  },
+  "background": {
+    "color": "none"
+  },
+  "button": {
+    "color": "none",
+    "content": "Submit"
+  },
+  "form": {
+    "color": "none",
+    "inputs": []
+  }
+}
