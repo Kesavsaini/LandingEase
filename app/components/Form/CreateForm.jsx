@@ -55,7 +55,7 @@ const CreateForm = ({index,form,formValue}) => {
        updateFormSection({formSection:formValue, section:"title", key:"content", value:e.target.value})
       );
     }}
-    defaultValue={titleContent}
+    value={titleContent}
   />
    <ColorPicker
     label="Title Color"
@@ -79,7 +79,7 @@ const CreateForm = ({index,form,formValue}) => {
             updateFormSection({formSection:formValue, section:"description", key:"content", value:e.target.value})
         );
     }}
-    defaultValue={descriptionContent}
+    value={descriptionContent}
   />
   <ColorPicker
     label="Description Color"
@@ -138,6 +138,7 @@ const CreateForm = ({index,form,formValue}) => {
             updateFormSection({formSection:formValue, section:"button", key:"content", value:e.target.value})
         );
     }}
+    value={btnContent}
   />
    <ColorPicker
     label="Button Color"

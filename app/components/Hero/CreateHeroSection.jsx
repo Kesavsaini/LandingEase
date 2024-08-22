@@ -12,8 +12,8 @@ const CreateHeroSection = () => {
   const {
     logo: { isLogo, src: logoSrc },
     image: { isImage, src: ImageSrc,size:imgSize },
-    bigText: { color: bigTextColor },
-    smallText: { color: smallTextColor },
+    bigText: { color: bigTextColor,content:bigTextContent },
+    smallText: { color: smallTextColor,content:smallTextContent },
     backGroundImage: { isBackGroundImage, backGroundColor },
   } = useSelector((state) => state.page.hero);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const CreateHeroSection = () => {
               updateHero({ section: "logo", key: "isLogo", value: checked })
             );
           }}
-          defaultChecked={isLogo}
+          checked={isLogo}
         />
       </div>
       {isLogo && (
@@ -37,7 +37,7 @@ const CreateHeroSection = () => {
             className="justify-between"
             id="logoImage"
             section="logo"
-             sectionType="hero"
+            sectionType="hero"
           />
         </>
       )}
@@ -54,6 +54,7 @@ const CreateHeroSection = () => {
             })
           );
         }}
+        value={bigTextContent}
       />
       <ColorPicker
         label="Title Color"
@@ -89,6 +90,7 @@ const CreateHeroSection = () => {
             })
           );
         }}
+        value={smallTextContent}
       />
       <ColorPicker
         label="Description Color"
@@ -121,7 +123,7 @@ const CreateHeroSection = () => {
               updateHero({ section: "image", key: "isImage", value: checked })
             );
           }}
-          defaultChecked={isImage}
+          checked={isImage}
         />
       </div>
       {isImage && (
@@ -167,7 +169,7 @@ const CreateHeroSection = () => {
               updateHero({ section: "backGroundImage", key: "isBackGroundImage", value: checked })
             );
           }}
-          defaultChecked={isBackGroundImage}
+          checked={isBackGroundImage}
         />
       </div>
       {isBackGroundImage && (

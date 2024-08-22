@@ -19,7 +19,7 @@ const DekstopView = () => {
     <>
     <div className='w-full' data-theme={theme}>
     <div className='h-full'>
-      <Hero myRef={ref} theme={theme} isMobileView={isMobileView}/>
+    {hero && <Hero myRef={ref} theme={theme} isMobileView={isMobileView}/>}
       </div>
       {
         Object.keys(otherSections).map((sectionKey)=>{

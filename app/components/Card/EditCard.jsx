@@ -29,7 +29,7 @@ const EditCard = ({type,card,index,cardsKey}) => {
            updateCard({cardsSection:cardsKey, index, section:"image", key:"isImage", value:checked })
         );
       }}
-      defaultChecked={isImage}
+      checked={isImage}
     />
   </div>
   {isImage && (
@@ -46,7 +46,7 @@ const EditCard = ({type,card,index,cardsKey}) => {
       <ImageSizeSlider section="image" datakey="size" sectionType="card" index={index} upperSection={cardsKey} defaultValue={imgSize}/>
        <div className="w-full flex justify-between">
         Show Image in Bottom
-       <Checkbox defaultChecked={isBottom} onCheckedChange={(checked)=>{
+       <Checkbox checked={isBottom} onCheckedChange={(checked)=>{
          dispatch(
             updateCard({cardsSection:cardsKey,section:"image", index, key:"isBottom", value:checked })
          );
@@ -64,6 +64,7 @@ const EditCard = ({type,card,index,cardsKey}) => {
         updateCard({cardsSection:cardsKey,section:"title",index, key:"content", value:e.target.value })
      );
     }}
+    value={titleContent}
   />
   <ColorPicker
     label="Title Color"
@@ -88,6 +89,7 @@ const EditCard = ({type,card,index,cardsKey}) => {
          );
     }}
     defaultValue={descriptionContent}
+    value={descriptionContent}
   />
   <ColorPicker
     label="Description Color"
@@ -113,7 +115,7 @@ const EditCard = ({type,card,index,cardsKey}) => {
             updateCard({cardsSection:cardsKey,section:"button",index, key:"isButton", value:checked})
          );
       }}
-      defaultChecked={isButton}
+      checked={isButton}
     />
   </div>
 
@@ -127,6 +129,7 @@ const EditCard = ({type,card,index,cardsKey}) => {
             updateCard({cardsSection:cardsKey,section:"button",index, key:"content", value:e.target.value})
          );
     }}
+    value={buttonContent}
   />}
   {isButton && <Input
     type="text"
@@ -137,6 +140,7 @@ const EditCard = ({type,card,index,cardsKey}) => {
             updateCard({cardsSection:cardsKey,section:"button",index, key:"link", value:e.target.value})
          );
     }}
+    value={btnLink}
   />}
    {isButton &&<ColorPicker
     label="Button Color"

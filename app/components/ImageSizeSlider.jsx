@@ -29,7 +29,7 @@ const ImageSizeSlider = ({section,datakey,sectionType,upperSection,defaultValue,
   return (
     <div className='flex justify-between'>
       <div className='w-full'>Image Size</div>
-    <Slider defaultValue={[defaultValue]} max={100} min={0} step={1} onValueChange={handleChange}
+    <Slider defaultValue={[defaultValue]} value={[defaultValue]} max={100} min={0} step={1} onValueChange={handleChange}
     
 />
 </div>

@@ -22,7 +22,7 @@ const ColorPicker = ({label,id,defaultValue,onChange, onThemeSelect}) => {
      <Popover>
   <PopoverTrigger><ThreeDost/></PopoverTrigger>
   <PopoverContent className="w-36 flex flex-col gap-2 mx-4">
-  <Input type="color" className="w-full rounded-lg p-1" id={id} defaultValue={defaultValue} title="Choose your color" onChange={onChange}/> 
+  <Input type="color" className="w-full rounded-lg p-1" id={id} value={defaultValue} title="Choose your color" onChange={onChange}/> 
   <Button variant="outline" className="text-xs p-1" onClick={onThemeSelect}>
       Use Theme color
      </Button>

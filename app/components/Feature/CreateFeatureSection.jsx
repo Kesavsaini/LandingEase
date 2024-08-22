@@ -29,7 +29,7 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
           updateFeatureSection({ feature:featureValue, section: "image", key: "isImage", value: checked })
         );
       }}
-      defaultChecked={isImage}
+      checked={isImage}
     />
   </div>
   {isImage && (
@@ -45,7 +45,7 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
       <ImageSizeSlider section="image" datakey="size" sectionType="feature" upperSection={featureValue} defaultValue={imgSize}/>
        <div className="w-full flex justify-between">
         Show Image on Right
-       <Checkbox defaultChecked={!imageOnLeft} onCheckedChange={(checked)=>{
+       <Checkbox checked={!imageOnLeft} onCheckedChange={(checked)=>{
          dispatch(
            updateFeatureSection({ feature:featureValue, section: "image", key: "imageOnLeft", value:!checked})
          );
@@ -62,6 +62,7 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
         updateFeatureSection({ feature:featureValue, section: "title", key: "content", value: e.target.value })
       );
     }}
+    value={titleContent}
   />
   <ColorPicker
     label="Title Color"
@@ -85,6 +86,7 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
         updateFeatureSection({ feature:featureValue, section: "description", key: "content", value: e.target.value })
       );
     }}
+    value={descriptionContent}
   />
   <ColorPicker
     label="Description Color"
@@ -125,7 +127,7 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
           updateFeatureSection({ feature:featureValue, section: "background", key: "isBgImage", value: checked })
         );
       }}
-      defaultChecked={isBgImage}
+      checked={isBgImage}
     />
   </div>
   {isBgImage && (

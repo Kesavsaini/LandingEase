@@ -2,10 +2,11 @@
 import React, { useState } from 'react'
 import MobileMenu from './MobileMenu'
 import ThemeSelector from './ThemeSelector'
+import { usePathname } from 'next/navigation'
 
 
 const NavBar = () => {
-  
+  const pathname = usePathname();
   return (
     <div className='p-4 flex justify-between items-center'>
         <div className='flex items-center justify-center gap-4'>
@@ -17,9 +18,9 @@ const NavBar = () => {
         </div>
         </div>
         <div>
-          <div className='w-full flex flex-col justify-center items-center'>
+         {pathname.startsWith("/dashboard/create/") && <div className='w-full flex flex-col justify-center items-center'>
           <ThemeSelector/>
-          </div>
+          </div>}
         </div>
     </div>
   )

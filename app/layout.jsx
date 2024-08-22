@@ -1,7 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
-import { Toaster } from "@/components/ui/sonner"
+import AuthProvider from "./AuthProvider";
+import { Toaster } from "sonner";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,14 +17,16 @@ export const metadata = {
 //   initialScale: 0,
 // }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children}) {
   return (
     <html lang="en" data-theme="light">
       <body className={inter.className}>
+      <Toaster position="top-center" richColors/>
+      <AuthProvider>
       <StoreProvider>
-      <Toaster />
         {children}
       </StoreProvider>
+      </AuthProvider>
         </body>
     </html>
   );

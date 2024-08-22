@@ -63,6 +63,7 @@ const EditCardsSection = ({ cardsSection, index, cardsKey }) => {
             })
           );
         }}
+        value={content}
       />
       <ColorPicker
         label="Title Color"
