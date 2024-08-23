@@ -17,7 +17,7 @@ const ThemeSelector = () => {
         dispatch(themeChanger(value));
     }} data-theme={theme}>
   <SelectTrigger className="w-full">
-    <SelectValue placeholder="Theme" />
+    <SelectValue placeholder="Theme" className="text-xs"/>
   </SelectTrigger>
   <SelectContent>
     <div className="flex flex-col gap-2">

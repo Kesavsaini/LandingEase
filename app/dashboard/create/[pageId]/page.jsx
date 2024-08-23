@@ -20,6 +20,20 @@ const page = ({params}) => {
     useEffect(()=>{
       initilizeReduxState();
     },[])
+
+    useEffect(() => {
+      const handleBeforeUnload = (event) => {
+        event.preventDefault();
+        event.returnValue = '';
+      };
+    
+      window.addEventListener("beforeunload", handleBeforeUnload);
+    
+      return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
+    }, []);
+    
     const allSections = useSelector((state) => state.page);
     const {hero,...otherSections} =allSections;
     if(!hero){

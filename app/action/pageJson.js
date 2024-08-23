@@ -61,3 +61,13 @@ export const deletePageById=async({id})=>{
         return {message:e.message,done:false};
     }
 }
+
+export const updateStateByPageId=async({pageId,newState})=>{
+  try{
+      const page=await Page.findByIdAndUpdate(pageId,{$set:{state:newState}},{new:true});
+      if(!page) return {message:"Page not found",done:false};
+      return {message:"Page state updated",done:true};
+  }catch(e){
+    return {message:e.message,done:false};
+  }
+}
