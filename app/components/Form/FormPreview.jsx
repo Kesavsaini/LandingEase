@@ -11,7 +11,7 @@ const FormPreview = ({ formSection, isMobileView }) => {
 
   return (
     <div
-      className="w-full h-full xxs:p-4"
+      className={`w-full ${isMobileView ? "h-[36rem]":"h-[28rem]"} xxs:p-4 flex justify-center items-center`}
       style={{ backgroundColor: bgClr !== "none" && bgClr }}
     >
       
@@ -23,7 +23,7 @@ const FormPreview = ({ formSection, isMobileView }) => {
         {(titleContent || descriptionContent) &&  <div
           className={`${isMobileView ? "h-1/2" : "h-full"} ${
             isMobileView ? "w-full" : "w-1/2"
-          } flex flex-col justify-center items-center`}
+          } flex flex-col justify-center items-center text-center`}
         >
           <div className="flex flex-col justify-center items-center h-full">
             <div

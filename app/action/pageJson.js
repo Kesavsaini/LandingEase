@@ -71,3 +71,25 @@ export const updateStateByPageId=async({pageId,newState})=>{
     return {message:e.message,done:false};
   }
 }
+
+export const updatePageById=async({pageId,body})=>{
+   try{
+    const session = await getServerSession(authOptions);
+    const page=await Page.findByIdAndUpdate(pageId,{$set:{...body}},{new:true});
+    if(!page) return {message:"Page not found",done:false};
+    return {message:"Page updated",done:true};
+   }catch(err){
+    return {message:err.message,done:false};
+   }
+}
+
+export const getPublishedPageBySubDomain=async({subdomain})=>{
+    try{
+     const page=await Page.findOne({subdomain});
+     if(!page || !page.published) return {message:"Page not found",done:false};
+     return {data:page,done:true};
+    }catch(err){
+     return {message:err.message,done:false};
+    }
+ }
+ 

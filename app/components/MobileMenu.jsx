@@ -20,7 +20,7 @@ const MobileMenu = () => {
     <DropdownMenuTrigger>
      <ThreeLines/>
   </DropdownMenuTrigger>
-  <DropdownMenuContent className='w-36  rounded-lg p-4 ml-4'>
+  <DropdownMenuContent className='w-64  rounded-lg p-4 ml-4'>
     {
         MenuItems.map((item,idx)=>{
             return (

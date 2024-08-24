@@ -6,11 +6,11 @@
         },
         "bigText":{
             "content":"Enter Your Hero Title Here",
-            "color":"#FFFFFF"
+            "color":"none"
         },
         "smallText":{
             "content":"Enter Your Descripion Here",
-            "color":"#FFFFFF"
+            "color":"none"
         },
         "backGroundImage":{
             "isBackGroundImage":false,

@@ -36,7 +36,7 @@ const CreateProject = () => {
         }
     }
   return (
-    <Card className="w-full sm:w-64 h-64">
+    <Card className="w-full sm:w-64 h-72 flex flex-col justify-around">
   <CardHeader>
     <CardTitle>Create New Project</CardTitle>
     <CardDescription></CardDescription>

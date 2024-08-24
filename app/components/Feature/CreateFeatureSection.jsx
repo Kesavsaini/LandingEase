@@ -10,17 +10,20 @@ import { useDispatch } from "react-redux";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import MyAlertDialog from "../MyAlertDialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const CreateFeatureSection = ({ index, feature,featureValue }) => {
   const dispatch = useDispatch();
   const {
-    image: { isImage, imageOnLeft, src: imgSrc, size:imgSize },
+    image: { isImage, imageOnLeft, src: imgSrc, size:imgSize,radius:ImgRadius },
     title: { content: titleContent, color: titleClr },
     description: { content: descriptionContent, color: descriptionClr },
     background: { color: bgClr, isBgImage, src: bgSrc },
   } = feature;
   return  (
-  <div className="flex flex-col gap-2 w-11/12 p-2">
+  <div className="flex flex-col gap-2 w-11/12">
+  <ScrollArea>
+  <div className="flex flex-col gap-2 w-full p-2 h-[24rem]">
   <div className="w-full flex justify-between">
     <div>Side Image</div>
     <Switch
@@ -43,6 +46,7 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
         sectionType="feature"
       />
       <ImageSizeSlider section="image" datakey="size" sectionType="feature" upperSection={featureValue} defaultValue={imgSize}/>
+      <ImageSizeSlider section="image" datakey="radius" sectionType="feature" upperSection={featureValue} defaultValue={ImgRadius}/>
        <div className="w-full flex justify-between">
         Show Image on Right
        <Checkbox checked={!imageOnLeft} onCheckedChange={(checked)=>{
@@ -142,12 +146,15 @@ const CreateFeatureSection = ({ index, feature,featureValue }) => {
       />
     </>
   )}
-  <MyAlertDialog type="delete" name={"Feature-"+index} onClick={()=>{
+  </div>
+  </ScrollArea>
+  <MyAlertDialog className="w-full" type="delete" name={"Feature-"+index} onClick={()=>{
     dispatch(deleteFeatureSection(index));
   }}>
   <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-full">Delete section</Button>
   </MyAlertDialog>
-</div>)
+  </div>
+)
 };
 
 export default CreateFeatureSection;

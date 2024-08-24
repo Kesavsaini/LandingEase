@@ -9,11 +9,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { DeleteIcon } from "./Icons";
+import { ArrowUpRight, DeleteIcon } from "./Icons";
 import MyAlertDialog from "./MyAlertDialog";
-import { deletePageById } from "../action/pageJson";
+import { deletePageById, updatePageById } from "../action/pageJson";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+
+const visitSite = (
+  <>
+    Visit
+    <ArrowUpRight />
+  </>
+);
 
 const UserPagesCard = ({
   name,
@@ -23,19 +30,37 @@ const UserPagesCard = ({
   updatedAt,
   id,
 }) => {
-    const router = useRouter();
+  const router = useRouter();
   const deletePage = async () => {
-    const res=await deletePageById({ id });
-    if(res.done){
-        toast.success(res.message);
-    }else{
-        toast.error(res.message);
+    const res = await deletePageById({ id });
+    if (res.done) {
+      toast.success(res.message);
+    } else {
+      toast.error(res.message);
     }
   };
+  const handlePagePublish=async()=>{
+    const res=await updatePageById({pageId:id,body:{published:!published}});
+    if(!res.done){
+      toast.error("there was an error updating");
+    }else{
+      toast.success("updated successfully");
+    }
+  }
   return (
-    <Card className="w-full sm:w-64 h-64">
+    <Card className="w-full sm:w-64 h-72 flex flex-col justify-around relative">
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle className="flex justify-between items-center">
+          {name}
+          <Button variant="outline" onClick={handlePagePublish}>
+            {published ? "Unpublish" : "Publish"}
+          </Button>
+          {published && (
+            <Button variant="outline" className="p-2 absolute top-0 right-0" onClick={()=>window.open (`http://localhost:3000/${subdomain}`, '_ blank')}>
+              <ArrowUpRight />
+            </Button>
+          )}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2 text-sm">
@@ -55,11 +80,11 @@ const UserPagesCard = ({
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button onClick={()=>router.push(`/dashboard/create/${id}`)}>Edit Page</Button>
+        <Button onClick={() => router.push(`/dashboard/create/${id}`)}>
+          Edit Page
+        </Button>
         <MyAlertDialog type="delete" name={name} onClick={deletePage}>
-          <div
-            className="text-red-600 hover:text-red-800 border p-2 rounded-lg"
-          >
+          <div className="text-red-600 hover:text-red-800 border p-2 rounded-lg">
             <DeleteIcon />
           </div>
         </MyAlertDialog>
