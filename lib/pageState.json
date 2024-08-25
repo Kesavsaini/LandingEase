@@ -25,6 +25,22 @@
         }
 
     },
-    "theme":"none"
+    "theme":"none",
+    "footer":{
+        "meta":{
+          "isFooter":false
+        },
+        "adress":{
+            "isLogo":true,
+            "content":"Enter Your Address Here",
+            "color":"none"
+        },
+        "background":{
+            "color":"none"
+        },
+        "socials":{
+            "socialArray":[]
+        }
+    }
 }
 

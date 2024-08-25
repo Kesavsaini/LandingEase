@@ -10,10 +10,10 @@ import {
 
 
 
-const ColorPicker = ({label,id,defaultValue,onChange, onThemeSelect}) => {
+const ColorPicker = ({label,id,defaultValue,onChange, onThemeSelect,noLabel}) => {
   return (
   <div className='w-full flex justify-between items-center'>
-    <div >{label}</div>
+   {!noLabel && <div >{label}</div>}
     <div className='flex items-center gap-2'>
     {/* <Input type="color" className="rounded-lg w-10 p-1" id={id} defaultValue={defaultValue} title="Choose your color" onChange={onChange}/>  */}
      {/* <Button variant="outline" className="text-xs p-1">

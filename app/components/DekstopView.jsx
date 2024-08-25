@@ -4,11 +4,12 @@ import Hero from './Hero/Hero'
 import { useSelector } from 'react-redux';
 import FeaturePreview from './Feature/FeaturePreview';
 import CardsSectionPreview from './Card/CardsSectionPreview';
+import FooterPreview from './Footer/FooterPreview';
 import FormPreview from './Form/FormPreview';
 
 const DekstopView = () => {
   const allSections = useSelector((state) => state.page);
-  const {hero,theme,...otherSections}=allSections;
+  const {hero,theme,footer,...otherSections}=allSections;
   const view=useSelector(state=>state.other.view);
   const ref=useRef(null);
   const isMobileView=view==="mobile";
@@ -32,6 +33,7 @@ const DekstopView = () => {
             }
         })
       }
+    {footer &&footer.meta.isFooter && <FooterPreview footer={footer} isMobileView={isMobileView}/>}
     </div>
     </>
   )

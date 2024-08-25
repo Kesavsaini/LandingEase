@@ -9,11 +9,8 @@ import MyAlertDialog from '../MyAlertDialog';
 import { useDispatch } from 'react-redux';
 import { addInputsToForm, deleteFormSection, deletFormInput, updateFormInput, updateFormSection } from '@/lib/features/landingPage/pageSlice';
 import SelectInputType from './SelectInputType';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+
+import PopOver from '../PopOver';
 // import {InputIcon } from '@radix-ui/react-icons';
 
 
@@ -190,12 +187,13 @@ const InputWidget=({index,formValue,input})=>{
                     updateFormInput({ formSection:formValue, index, key:"type", value:value })
                  );
                 }} value={input.type}/>
-                <PlaceHolderPopover onChange={(e)=>{
+                <PopOver onChange={(e)=>{
                      dispatch(
                       updateFormInput({ formSection:formValue, index, key:"placeholder", value:e.target.value })
                    );
                 }}
                  value={input.placeholder}
+                 placeholder={"Enter placeholder"}
                 />
               <div className="flex items-center">
                 <MyAlertDialog
@@ -215,23 +213,4 @@ const InputWidget=({index,formValue,input})=>{
               </div>
             </div>
           );
-}
-
-export const PlaceHolderPopover =({onChange,value})=>{
-  return(
-    <Popover>
-  <PopoverTrigger className='hover:bg-zinc-50 p-1 rounded-lg'>
-    <InputIcon/>
-  </PopoverTrigger>
-  <PopoverContent>
-  <Input
-    type="text"
-    placeholder="Enter Placeholder here"
-    className="w-full"
-    onChange={onChange}
-    value={value}
-  />
-  </PopoverContent>
-  </Popover>
-  )
 }

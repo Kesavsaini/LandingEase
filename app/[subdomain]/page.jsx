@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Feature from './components/Feature';
 import Cards from './components/Cards';
 import Form from './components/Form';
+import Footer from './components/Footer';
 
 const page = async({params}) => {
   const page=await getPublishedPageBySubDomain({subdomain:params.subdomain});
@@ -12,7 +13,7 @@ const page = async({params}) => {
       Page Do not exist
     </div>
   }
-  const {hero,theme,...otherSections}=page.data.state;
+  const {hero,footer,theme,...otherSections}=page.data.state;
   return (
     <div data-theme={theme}>
      <Hero hero={hero}/>
@@ -27,6 +28,7 @@ const page = async({params}) => {
             }
         })
       }
+      {footer && footer.meta.isFooter && <Footer footer={footer}/>}
     </div>
   )
 }
