@@ -1,7 +1,9 @@
 'use client'
-import React from 'react'
+import { sentMessage } from '@/app/action/pageJson';
+import React, { useState } from 'react'
+import { toast } from 'sonner';
 
-const Form = ({formSection}) => {
+const Form = ({formSection,subdomain,formName}) => {
     const {
         title: { content: titleContent, color: titleClr },
         description: { content: descriptionContent, color: descriptionClr },
@@ -9,6 +11,22 @@ const Form = ({formSection}) => {
         button: { color: btnClr, content: btnContent },
         form: { color: formBgClr, inputs },
       } = formSection;
+      const [formBody,setFormBody] = useState({})
+
+      const handleSubmit=async(e)=>{
+          e.preventDefault();
+          let message={};
+          Object.keys(formBody).forEach(key=>{
+            const idxPosition = key.lastIndexOf('idx');
+            const numericPart = parseInt(key.slice(idxPosition + 3));
+             message[key]={name:inputs[numericPart].placeholder,value:formBody[key]};
+          })
+          console.log({subdomain,formName,message});
+          const res=await sentMessage({subdomain,formName,message});
+          if(res.done){
+            toast.success(res.message);
+          }else toast.error(res.message);
+      }
     
       return (
         <div
@@ -49,18 +67,24 @@ const Form = ({formSection}) => {
             > 
               <div className="card-body">
                 <div className="flex flex-col gap-2 w-full">
-                {inputs.map(({ type, name, placeholder, required, value }) =>
+                {inputs.map(({ type, name, placeholder, required, value },index) =>
                   type === "textarea" ? (
-                    <textarea className="textarea textarea-bordered" placeholder={placeholder} style={{ backgroundColor: formBgClr !== "none" && formBgClr }}></textarea>
+                    <textarea className="textarea textarea-bordered" name={formName+"idx"+index}
+                    id={formName+"idx"+index} key={formName+"idx"+index}  placeholder={placeholder} style={{ backgroundColor: formBgClr !== "none" && formBgClr }}
+                    onChange={(e)=>setFormBody(prev=>({...prev,[e.target.name]:e.target.value}))}
+                    ></textarea>
                   ) : (
                     <input
                       type={type}
-                      name={name}
+                      name={formName+"idx"+index}
+                      id={formName+"idx"+index}
+                      key={formName+"idx"+index}
                       placeholder={placeholder}
                       required={required}
                       value={value}
                       className="input input-bordered w-full max-w-xs"
                       style={{ backgroundColor: formBgClr !== "none" && formBgClr }}
+                      onChange={(e)=>setFormBody(prev=>({...prev,[e.target.name]:e.target.value}))}
                     />
                   )
                 )}
@@ -69,6 +93,8 @@ const Form = ({formSection}) => {
                   <button
                     className="btn btn-primary border-none"
                     style={{ backgroundColor: btnClr !== "none" && btnClr }}
+                    type='submit'
+                    onClick={handleSubmit}
                   >
                     {btnContent}
                   </button>

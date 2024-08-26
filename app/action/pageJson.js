@@ -1,5 +1,6 @@
 'use server'
 import Page from '@/lib/db/schema/page'
+import Message from "@/lib/db/schema/inbox"
 import { getServerSession } from "next-auth"
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { NextResponse } from 'next/server';
@@ -92,4 +93,52 @@ export const getPublishedPageBySubDomain=async({subdomain})=>{
      return {message:err.message,done:false};
     }
  }
+
+export const sentMessage=async({subdomain,formName,message})=>{
+  try{
+    if(!subdomain || !formName || !message) return {message:"There was an error",done:false};
+    const newMessage=await Message({
+        subdomain,
+        formName,
+        message
+    })
+    await newMessage.save();
+    return {message:"Message Sent Successfully",done:true}
+    
+  }catch(err){
+    return {message:"There was an error",done:false};
+  }
+}
+
+export const getMessageBySubdomain=async({subdomain})=>{
+    try{
+      if(!subdomain) return {message:"There was an error loading Messages",done:false};
+      const messages=await Message.find({
+          subdomain
+      }).sort({created_at:-1});
+      return {message:"Message Loaded",done:true,messages}
+      
+    }catch(err){
+      return {message:"There was an error",done:false};
+    }
+  }
  
+  export const getMessageById=async({messageId})=>{
+    try{
+      const message=await Message.findById(messageId);
+      return {message:"Message Loaded",done:true,userMessage:JSON.stringify(message)}
+      
+    }catch(err){
+      return {message:"There was an error",done:false};
+    }
+  }
+
+  export const getMessageOfAllSubdomains=async({subdomains})=>{
+    try{
+      const messages=await Message.find({ subdomain: { $in: subdomains } }).sort({created_at:-1});
+      return {message:"Message Loaded",done:true,messages}
+      
+    }catch(err){
+      return {message:"There was an error",done:false};
+    }
+  }

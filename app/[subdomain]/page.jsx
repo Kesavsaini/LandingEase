@@ -24,7 +24,7 @@ const page = async({params}) => {
            }else if(sectionKey.startsWith('cards')){
             return <Cards key={sectionKey} cardSection={otherSections[sectionKey]}/>
             }else if(sectionKey.startsWith('form')){
-              return <Form key={sectionKey} formSection={otherSections[sectionKey]}/>
+              return <Form key={sectionKey} formSection={otherSections[sectionKey]} subdomain={params.subdomain} formName={sectionKey}/>
             }
         })
       }
