@@ -126,3 +126,48 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.landingGradient{
+  /* background-color: #FBAB7E;
+  background-image:linear-gradient(62deg,#FBAB7E,#F7CE68);
+
+  background-image: linear-gradient( 107.7deg,  rgba(235,230,44,0.55) 8.4%, rgba(252,152,15,1) 90.3% ); */
+  /* background-image: linear-gradient(120deg, #f6d365,#fda085); */
+  
+  /* background-image: linear-gradient(to right, #434343,black); */
+
+  background-image: linear-gradient(to right, #f1eceb,#f7d67d); 
+  
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(to right, #000000, #ffffff);
+  background-size: 200% 200%;
+  animation: gradientAnimation 4s ease infinite;
+}
+
+.bg-animated-gradient2 {
+  background: linear-gradient(to right, #f7d67d,#f7b680);
+}
+
+.glassMorphic {
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+

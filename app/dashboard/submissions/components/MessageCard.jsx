@@ -17,7 +17,7 @@ const MessageCard = ({subdomain, formName, date,msgPreview,id}) => {
         {/* <Badge className={`${isActivePath ?"bg-white": "bg-black"} ${isActivePath ?"text-black": "text-white"} text-[8px]`}>{date}</Badge> */}
         <div className={`text-[8px]`}>{date}</div>
         </div>
-        <div className='text-base'>{msgPreview}</div>
+        <div className='text-xs'>{msgPreview}</div>
         
     </div>
   )

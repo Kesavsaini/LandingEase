@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import MessageCard from "./MessageCard";
 import { DateFormatter } from "@/lib/utilsFn";
 import { usePathname } from "next/navigation";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Inbox = () => {
   const pathname=usePathname();
@@ -15,7 +16,6 @@ const Inbox = () => {
   const getMessagesByValue=async()=>{
     const res=await getMessageBySubdomain({subdomain:selected});
     if(res.done){
-      console.log(res.messages);
       setMessages(res.messages);
     }else toast.error(res.message);
   }
@@ -23,7 +23,6 @@ const Inbox = () => {
   const getAllMessages =async(subdomains)=>{
    const res= await getMessageOfAllSubdomains({subdomains:subdomains});
    if(res.done){
-    console.log("Get these",res.messages);
     setMessages(res.messages);
   }else toast.error(res.message);
   }
@@ -35,11 +34,15 @@ const Inbox = () => {
        return {name:page.name,id:page.id,subdomain:page.subdomain};
     })
     setProjectsArray(projectsArr);
-    console.log("ProjectsArray",projectsArray);
    }
    useEffect(()=>{
       getPages();
     },[])
+
+    useEffect(()=>{
+      console.log("let me check how many times it runs")
+      getAllMessages(projectsArray.map((project)=>project.subdomain));
+    },[projectsArray])
 
   useEffect(()=>{
     if(selected==='all'){
@@ -51,14 +54,16 @@ const Inbox = () => {
       Inbox
       <SelectInboxProject selected={selected} setSelected={setSelected} projectsArray={projectsArray}/>
       </div>
-      <div className="flex flex-col p-4 justify-center items-center gap-2">
+      <ScrollArea className="flex flex-col">
+      <div className="flex flex-col p-4 items-center gap-2 h-[30rem]">
+      
         {
             messages.length>0 ?
             messages.map(msg=>{
               const formattedDate=DateFormatter(msg.created_at);
               const formattedFormName="Form "+ msg.formName.substr(5);
               const firstKey=Object.keys(msg.message)[0];
-              const msgPreview=msg.message[firstKey].value.slice(0,12)+"...";
+              const msgPreview=msg.message[firstKey].value.slice(0,36)+"...";
               return <MessageCard subdomain={msg.subdomain} formName={formattedFormName} date={formattedDate} msgPreview={msgPreview} id={msg._id}/>
             })
             :
@@ -66,6 +71,7 @@ const Inbox = () => {
 
           }
       </div>
+      </ScrollArea>
   </div>;
 };
 
