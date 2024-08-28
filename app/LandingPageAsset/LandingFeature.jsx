@@ -47,7 +47,7 @@ const LandingFeature = () => {
             <h2 className="text-2xl sm:text-4xl font-bold mb-4">
             Discover the Advantages of LandingEase
             </h2>
-            <p className="text-xl text-gray-700">
+            <p className="text-xl text-gray-500">
             Create and launch landing pages with ease—LandingEase simplifies the process for a hassle-free experience
             </p>
           </div>

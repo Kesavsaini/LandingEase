@@ -149,7 +149,7 @@
   /* background-image: linear-gradient(to right, #434343,black); */
 
   background-image: linear-gradient(to right, #f1eceb,#f7d67d); 
-  
+  color: #4a3c31;
 }
 
 .bg-animated-gradient {
@@ -169,5 +169,13 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.dancing-script {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 

@@ -10,7 +10,7 @@ import React from 'react'
 const FeatureCard = ({title,description,icon}) => {
   return (
     <div
-    className="relative flex flex-col items-center border p-4 rounded-lg glassMorphic text-black h-60 gap-4"
+    className="relative flex flex-col items-center border p-4 rounded-lg glassMorphic h-60 gap-4"
   >
     <div className='w-16 h-16 rounded-full bg-orange-600 flex justify-center items-center text-white'>
     {
