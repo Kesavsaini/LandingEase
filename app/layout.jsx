@@ -3,6 +3,7 @@ import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import AuthProvider from "./AuthProvider";
 import { Toaster } from "sonner";
+import GoogleAnalytics from './GoogleAnalytics';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,6 +21,7 @@ export const metadata = {
 export default function RootLayout({ children}) {
   return (
     <html lang="en" data-theme="light">
+       <GoogleAnalytics />
       <body className={inter.className}>
       <Toaster position="top-center" richColors/>
       <AuthProvider>

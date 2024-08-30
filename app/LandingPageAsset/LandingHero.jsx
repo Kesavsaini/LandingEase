@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import dashboardSs from '../../public/dashboardSs.png'
 import { Button } from "@/components/ui/button";
+import HeroButton from "./HeroButton";
 
 const LandingHero = () => {
   return (
@@ -27,7 +28,7 @@ const LandingHero = () => {
             </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center flex gap-4 justify-center items-center">
                <div className="p-[4px] rounded-lg bg-animated-gradient w-48 h-12">
-               <Button className="bg-[#1a2a3a] hover:bg-zinc-950 w-full h-full" >Start using free</Button>
+              <HeroButton/>
                </div>
             </div>
           </div>

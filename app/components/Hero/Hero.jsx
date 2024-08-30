@@ -39,7 +39,7 @@ const Hero = ({theme,isMobileView,myRef}) => {
        }
      <div className={`w-full h-full flex ${isImage? 'justify-between':'justify-center' }  items-center ${isMobileView && "flex-col"}`}>
         <div className={`${isMobileView? "w-full":"w-1/2"} ${isMobileView? "h-1/2":"h-full"}  overflow-clip text-ellipsis p-4 flex justify-center items-center`}>
-        <div className='flex justify-center flex-col items-center '>
+        <div className='flex justify-center flex-col items-center text-center'>
         <div className={`${isMobileView? "text-sm":"text-2xl"} font-extrabold overflow-hidden`} style={{color:bigContentColor!=="none" && bigContentColor}}>{bigContent}</div>
         <div className={`${isMobileView? "text-xs":"text-lg"} font-extralight`} style={{color:smallContentColor!=="none" && smallContentColor}}>{smallContent}</div>
         </div>

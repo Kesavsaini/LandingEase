@@ -35,6 +35,7 @@ const UserPagesCard = ({
     const res = await deletePageById({ id });
     if (res.done) {
       toast.success(res.message);
+      router.refresh();
     } else {
       toast.error(res.message);
     }
@@ -43,6 +44,7 @@ const UserPagesCard = ({
     const res=await updatePageById({pageId:id,body:{published:!published}});
     if(!res.done){
       toast.error("there was an error updating");
+      router.refresh();
     }else{
       toast.success("updated successfully");
     }
