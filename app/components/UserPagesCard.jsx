@@ -32,7 +32,7 @@ const UserPagesCard = ({
 }) => {
   const router = useRouter();
   const deletePage = async () => {
-    const res = await deletePageById({ id });
+    const res = await deletePageById({ id,subdomain });
     if (res.done) {
       toast.success(res.message);
       router.refresh();
@@ -44,9 +44,9 @@ const UserPagesCard = ({
     const res=await updatePageById({pageId:id,body:{published:!published}});
     if(!res.done){
       toast.error("there was an error updating");
-      router.refresh();
     }else{
       toast.success("updated successfully");
+      router.refresh();
     }
   }
   return (
@@ -67,17 +67,17 @@ const UserPagesCard = ({
       <CardContent>
         <div className="flex flex-col gap-2 text-sm">
           <div className="font-medium flex justify-between">
-            subdomain <span className="font-light">{subdomain}</span>
+            Path <span className="font-light">{subdomain}</span>
           </div>
           <div className="font-medium flex justify-between">
-            published{" "}
+            Published
             <span className="font-light">{published ? "Yes" : "No"}</span>
           </div>
           <div className="font-medium flex justify-between">
-            created at <span className="font-light">{createdAt}</span>
+            Created at <span className="font-light">{createdAt}</span>
           </div>
           <div className="font-medium flex justify-between">
-            last update <span className="font-light">{updatedAt}</span>
+            Last update <span className="font-light">{updatedAt}</span>
           </div>
         </div>
       </CardContent>

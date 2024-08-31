@@ -51,7 +51,7 @@ export function BarAnalytics() {
         return {name:page.name,subdomain:page.subdomain};
      })
      setProjectsArray(projectsArr);
-     setSelected("/"+projectsArr[0].subdomain);
+    if(projectsArr.length>0) setSelected("/"+projectsArr[0].subdomain);
     }
 
     React.useEffect(()=>{
@@ -67,7 +67,7 @@ export function BarAnalytics() {
     [selected,chartData]
   );
 
-  if(!selected){
+  if(!selected && chartData.length>0){
     return <div className="w-full h-full flex justify-center items-center">
       <LoadingSpinner/>
     </div>

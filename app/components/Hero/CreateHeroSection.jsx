@@ -54,6 +54,7 @@ const CreateHeroSection = () => {
             })
           );
         }}
+        maxlength={100}
         value={bigTextContent}
       />
       <ColorPicker

@@ -9,18 +9,6 @@ import {
   
 
 const SelectInboxProject = ({selected, setSelected,projectsArray}) => {
-  //  const [projectsArray, setProjectsArray] =useState([]);
-  //  const getPages=async()=>{
-  //   const projects=await getPagesByUser();
-  //   const projectsArr=projects.map((page)=>{
-  //      return {name:page.name,id:page.id,subdomain:page.subdomain};
-  //   })
-  //   setProjectsArray(projectsArr);
-  //   console.log("ProjectsArray",projectsArray);
-  //  }
-  //  useEffect(()=>{
-  //     getPages();
-  //   },[])
   return (
     <div className="font-semibold">
     <Select value={selected} onValueChange={(value)=>setSelected(value)}>

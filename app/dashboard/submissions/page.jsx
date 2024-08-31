@@ -2,7 +2,7 @@ import React from 'react'
 import Inbox from './components/Inbox'
 import { InBoxIllustrator } from '@/app/components/Icons'
 
-const page = () => {
+const Page = () => {
   return (
     <div className='w-full hidden sm:flex flex-col justify-center items-center border rounded-lg'>
       <InBoxIllustrator/>
@@ -11,4 +11,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

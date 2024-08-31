@@ -7,13 +7,12 @@ import { initState } from '@/lib/features/landingPage/pageSlice'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-const page = ({params}) => {
+const Page = ({params}) => {
     const dispatch=useDispatch();
     const initilizeReduxState=async()=>{
       let pageData=await getPageById({id:params.pageId});
       if(pageData.done){
          const pageState=JSON.parse(pageData.data);
-         console.log("this is page state",pageState.state);
         dispatch(initState(pageState.state));
       }
     }  
@@ -49,4 +48,4 @@ const page = ({params}) => {
   )
 }
 
-export default page
+export default Page

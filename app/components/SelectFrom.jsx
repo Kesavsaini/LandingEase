@@ -29,9 +29,9 @@ const SelectFrom = ({list,onButtonClick,buttonContent,onValueChange,value,placeh
   </SelectTrigger>
   <SelectContent>
     { 
-        list.length>0 && list.map((item)=>{
+        list.length>0 && list.map((item,index)=>{
             const text=getShowValue(item);
-            return <SelectItem value={item}>{text}</SelectItem>
+            return <SelectItem key={index} value={item}>{text}</SelectItem>
         })
     }
     <Button variant="outline" className="border-dashed flex gap-2 w-full" onClick={onButtonClick}>{buttonContent}</Button>

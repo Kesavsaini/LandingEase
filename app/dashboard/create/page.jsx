@@ -5,9 +5,8 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { DateFormatter } from '@/lib/utilsFn';
 import React from 'react'
 
-const page = async() => {
+const Page = async() => {
   const userPages=await getPagesByUser();
-  console.log("userPages",userPages);
   return (
     <ScrollArea>
     <div className='w-full sm:h-[34rem] p-4 flex flex-wrap gap-4'>
@@ -24,4 +23,4 @@ const page = async() => {
   )
 }
 
-export default page
+export default Page

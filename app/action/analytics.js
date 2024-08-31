@@ -2,7 +2,7 @@
  import analyticsAdmin from '@google-analytics/admin';
 // TODO(developer): Uncomment this variable and replace with your
   // Google Analytics 4 property ID before running the sample.
-  const propertyId = '456064184';
+  const propertyId = process.env.PROPERTY_ID;
 
   // Imports the Google Analytics Data API client library.
   import {BetaAnalyticsDataClient} from '@google-analytics/data';
@@ -62,15 +62,11 @@
   function printRunReportResponse(response) {
     const report=[]
     response.rows.forEach(row => {
-      console.log(
-        `${row.dimensionValues[0].value},${row.dimensionValues[1].value}, ${row.metricValues[0].value}`
-      );
       report.push({
         date: dateFormate(row.dimensionValues[1].value),
         path: row.dimensionValues[0].value,
         views: row.metricValues[0].value
       });
     });
-    console.log("See rows",JSON.stringify(report));
     return report;
   }

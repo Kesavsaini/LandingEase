@@ -26,9 +26,10 @@ const CreateCardSection = () => {
     dispatch(addCardsSection());
   };
 
+  const lastIndexContent=cardsSectionKeysArray.at(-1);
   useEffect(() => {
     setCards(cardsSectionKeysArray.at(-1));
-  }, [cardsSectionKeysArray.at(-1)]);
+  }, [cardsSectionKeysArray,lastIndexContent]);
 
   useEffect(()=>{
     if(!allSections[cards]){

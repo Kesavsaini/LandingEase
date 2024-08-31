@@ -26,7 +26,7 @@ const stepsArray = [
       steps: [
         "Review your customized page.",
         "Click 'Publish.'",
-        "Your page is deployed on a unique subdomain."
+        "Your page is deployed on a unique custom path"
       ],
       tag: "One-Click Deploy",
       image:UploadBro

@@ -12,7 +12,10 @@ export const CreatePage=async({name,subdomain})=>{
         const session = await getServerSession(authOptions);
         if(!name) return {message: "Name is required",done:false};
         if(!subdomain) return {message:"Subdomain is required",done:false};
-        if(subdomain) subdomain=subdomain.toLowerCase();
+        if(subdomain){
+          subdomain=subdomain.toLowerCase();
+          if(subdomain.indexOf(' ')!==-1) return {message:"Path should not contain white space",done:false};
+        } 
         const isSubdomainUnique = await Page.findOne({subdomain:subdomain});
         if(isSubdomainUnique){
             return {message:"New Project has been created successfully",subdomainError:true};
@@ -26,7 +29,6 @@ export const CreatePage=async({name,subdomain})=>{
         await newPage.save();
        return {message:"created new page",done:true};
     }catch(error){
-        console.error('Error publishing page:', error);
         return {message:"There was an error creating page",done:false};
     }
 }
@@ -45,16 +47,16 @@ export const getPageById=async({id})=>{
     try{
         const page=await Page.findById(id);
         if(!page) return {message:"Page not found",done:false};
-        console.log("this is page",page);
         return {data:JSON.stringify(page),done:true};
     }catch(e){
         return {message:e.message,done:false};
     }
 }
 
-export const deletePageById=async({id})=>{
+export const deletePageById=async({id,subdomain})=>{
     try{
         const session = await getServerSession(authOptions);
+        await Message.deleteMany({subdomain});
         const page=await Page.findByIdAndDelete(id);
         if(!page) return {message:"Page not found",done:false};
         return {message:"Page deleted",done:true};

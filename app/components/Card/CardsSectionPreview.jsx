@@ -16,8 +16,8 @@ const CardsSectionPreview = ({ isMobileView, cardSection }) => {
       </div>
       <div className="flex flex-wrap gap-4 p-2 justify-center items-center">
       {
-        cards.map((card)=>{
-            return <Card card={card} isMobileView={isMobileView}/>
+        cards.map((card,index)=>{
+            return <Card key={index} card={card} isMobileView={isMobileView}/>
         })
       }
       </div>

@@ -9,6 +9,8 @@ import {
 import { useRouter } from 'next/navigation'
 import { ThreeLines } from './Icons'
 import { MenuItems } from '@/lib/staticData'
+import { signOut } from 'next-auth/react'
+import { LogOutIcon } from 'lucide-react'
 
 const MobileMenu = () => {
     const router = useRouter()
@@ -31,6 +33,15 @@ const MobileMenu = () => {
             )
         })
     }
+     <DropdownMenuItem
+        className="cursor-pointer flex gap-2 items-center justify-start"
+        onClick={()=>signOut()}
+      >
+        <span>
+          <LogOutIcon/>
+        </span>
+        LogOut
+      </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
   )

@@ -21,7 +21,6 @@ const Form = ({formSection,subdomain,formName}) => {
             const numericPart = parseInt(key.slice(idxPosition + 3));
              message[key]={name:inputs[numericPart].placeholder,value:formBody[key]};
           })
-          console.log({subdomain,formName,message});
           const res=await sentMessage({subdomain,formName,message});
           if(res.done){
             toast.success(res.message);

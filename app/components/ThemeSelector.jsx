@@ -22,8 +22,8 @@ const ThemeSelector = () => {
   <SelectContent>
     <div className="flex flex-col gap-2">
     {
-        themes.length>0 && themes.map((item)=>{
-            return <SelectItem value={item} data-theme={item} className="p-2">{item==="none"?"custom":item}</SelectItem>
+        themes.length>0 && themes.map((item,index)=>{
+            return <SelectItem key={index} value={item} data-theme={item} className="p-2">{item==="none"?"custom":item}</SelectItem>
         })
     }
     </div>

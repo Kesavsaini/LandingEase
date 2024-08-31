@@ -1,7 +1,7 @@
 import { getMessageById } from '@/app/action/pageJson'
 import React from 'react'
 
-const page = async({params}) => {
+const Page = async({params}) => {
   const res=await getMessageById({messageId: params.messageId});
   if(!res.done){
    toast.error(res.message);
@@ -12,9 +12,9 @@ const page = async({params}) => {
     <div className='w-full h-[34rem] border rounded-lg p-4'>
      <div className='flex flex-col gap-4'>
          {
-            Object.keys(message).map((msgKey)=>{
+            Object.keys(message).map((msgKey,index)=>{
                 return (
-                    <div>
+                    <div key={index}>
                     <div className='text-xl font-bold'>{message[msgKey]["name"]}</div>
                     <div className='text-lg'>{message[msgKey]["value"]}</div>
                     </div>
@@ -27,4 +27,4 @@ const page = async({params}) => {
   )
 }
 
-export default page
+export default Page

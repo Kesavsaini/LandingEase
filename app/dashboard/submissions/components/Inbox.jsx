@@ -40,7 +40,6 @@ const Inbox = () => {
     },[])
 
     useEffect(()=>{
-      console.log("let me check how many times it runs")
       getAllMessages(projectsArray.map((project)=>project.subdomain));
     },[projectsArray])
 
@@ -59,12 +58,12 @@ const Inbox = () => {
       
         {
             messages.length>0 ?
-            messages.map(msg=>{
+            messages.map((msg,index)=>{
               const formattedDate=DateFormatter(msg.created_at);
               const formattedFormName="Form "+ msg.formName.substr(5);
               const firstKey=Object.keys(msg.message)[0];
               const msgPreview=msg.message[firstKey].value.slice(0,36)+"...";
-              return <MessageCard subdomain={msg.subdomain} formName={formattedFormName} date={formattedDate} msgPreview={msgPreview} id={msg._id}/>
+              return <MessageCard key={index} subdomain={msg.subdomain} formName={formattedFormName} date={formattedDate} msgPreview={msgPreview} id={msg._id}/>
             })
             :
             <div className="text-gray-600 text-center">No messages found</div>

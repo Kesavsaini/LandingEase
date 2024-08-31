@@ -13,11 +13,13 @@ import { Button } from '@/components/ui/button'
 import { AlertIcon, CreateIcon } from './Icons'
 import { CreatePage } from '../action/pageJson'
 import { toast } from "sonner"
+import { useRouter } from 'next/navigation'
 
 
   
 
 const CreateProject = () => {
+    const router=useRouter();
     const [name,setName]=useState(null);
     const [subdomain,setSubdomain]=useState(null);
     const [subdomainError,setSubdomainError]=useState(false);
@@ -25,12 +27,13 @@ const CreateProject = () => {
        let res=await CreatePage({name,subdomain});
        if(res.subdomainError){
         setSubdomainError(true);
-        toast.warning("Your subdomain should be unique");
+        toast.warning("Your path should be unique");
         }else if(res.done){
             toast.success(res.message)
             setName(null);
             setSubdomain(null);
             setSubdomainError(false);
+            router.refresh();
         }else if(!res.done){
           toast.error(res.message)
         }
@@ -44,10 +47,10 @@ const CreateProject = () => {
   <CardContent className="flex flex-col gap-2">
     <Input placeholder="Project Name" onChange={(e)=>setName(e.target.value)}/>
     <div className='items-start justify-start flex flex-col gap-1'>
-    <Input placeholder="Project Subdomain" onChange={(e)=>setSubdomain(e.target.value)}/>
+    <Input placeholder="Project path" onChange={(e)=>setSubdomain(e.target.value)}/>
   {subdomainError &&  <div className='text-red-600 text-xs flex gap-1 items-center'>
       <AlertIcon/>
-      subdomain already exists
+      path already exists
       </div>
     }
     </div>

@@ -30,8 +30,8 @@ const benefits = [
       icon: <BarChartIcon className="size-8"/>
     },
     {
-      title: "Deploy to Subdomain",
-      description: "Publish your landing pages effortlessly with direct deployment to a LandingEase subdomain, in just one click.",
+      title: "Deploy to Custom Path",
+      description: "Effortlessly publish your landing pages directly to a custom path on LandingEase with just one click.",
       icon: <RocketIcon className="size-8"/>
     }
   ];

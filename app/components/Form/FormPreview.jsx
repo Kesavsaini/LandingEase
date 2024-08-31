@@ -49,11 +49,12 @@ const FormPreview = ({ formSection, isMobileView }) => {
         > 
           <div className="card-body">
             <div className="flex flex-col gap-2">
-            {inputs.map(({ type, name, label, placeholder, required, value }) =>
+            {inputs.map(({ type, name, label, placeholder, required, value },index) =>
               type === "textarea" ? (
-                <textarea className="textarea textarea-bordered" placeholder={placeholder} style={{ backgroundColor: formBgClr !== "none" && formBgClr }}></textarea>
+                <textarea className="textarea textarea-bordered" key={index} placeholder={placeholder} style={{ backgroundColor: formBgClr !== "none" && formBgClr }}></textarea>
               ) : (
                 <input
+                  key={index}
                   type={type}
                   name={name}
                   placeholder={placeholder}

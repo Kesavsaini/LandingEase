@@ -36,6 +36,10 @@ export const authOptions = {
       return session;
     },
   },
+  pages: {
+    signIn: '/signin',
+    newUser: '/dashboard/create' // New users will be directed here on first sign in (leave the property out if not of interest)
+  },
   secret:process.env.NEXT_SECRET
 }
 

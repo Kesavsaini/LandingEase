@@ -105,7 +105,7 @@ const EditCardsSection = ({ cardsSection, index, cardsKey }) => {
         <div className="flex flex-col gap-2 h-52">
       {cards.map((card, index) => {
         return (
-          <CreateCardWidget index={index} card={card} cardsKey={cardsKey} />
+          <CreateCardWidget key={index} index={index} card={card} cardsKey={cardsKey} />
         );
       })}
       </div>
@@ -131,7 +131,6 @@ export const CreateCardWidget = ({ index, card, cardsKey }) => {
           type="delete"
           name={"Card "+index}
           onClick={() => {
-            console.log("yaha To aa gaya least")
             dispatch(deleteCard({cardsSection: cardsKey, index}));
           }}
         >
