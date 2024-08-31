@@ -58,7 +58,10 @@ const UserPagesCard = ({
             {published ? "Unpublish" : "Publish"}
           </Button>
           {published && (
-            <Button variant="outline" className="p-2 absolute top-0 right-0" onClick={()=>window.open (`http://localhost:3000/${subdomain}`, '_ blank')}>
+            <Button variant="outline" className="p-2 absolute top-0 right-0" onClick={()=>{
+               const baseUrl = window.location.origin;
+               window.open(`${baseUrl}/${subdomain}`, '_blank');
+              }}>
               <ArrowUpRight />
             </Button>
           )}
