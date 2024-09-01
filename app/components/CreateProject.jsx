@@ -27,7 +27,7 @@ const CreateProject = () => {
        let res=await CreatePage({name,subdomain});
        if(res.subdomainError){
         setSubdomainError(true);
-        toast.warning("Your path should be unique");
+        toast.warning("Your Id should be unique");
         }else if(res.done){
             toast.success(res.message)
             setName(null);
@@ -47,10 +47,10 @@ const CreateProject = () => {
   <CardContent className="flex flex-col gap-2">
     <Input placeholder="Project Name" onChange={(e)=>setName(e.target.value)}/>
     <div className='items-start justify-start flex flex-col gap-1'>
-    <Input placeholder="Project path" onChange={(e)=>setSubdomain(e.target.value)}/>
+    <Input placeholder="Project unique Id eg. kesav" onChange={(e)=>setSubdomain(e.target.value)}/>
   {subdomainError &&  <div className='text-red-600 text-xs flex gap-1 items-center'>
       <AlertIcon/>
-      path already exists
+      Id already exists
       </div>
     }
     </div>
