@@ -22,9 +22,7 @@ const FeaturePreview = ({ feature, theme, isMobileView }) => {
       <div
         className={`h-full w-full flex ${!isImage && "justify-center"} ${
           isMobileView ? "flex-col" : "flex-row"
-        } ${!imageOnLeft && "flex-row-reverse"} ${
-          !imageOnLeft && isMobileView && "flex-col-reverse"
-        }`}
+        } ${!imageOnLeft && "flex-row-reverse"}`}
       >
         {isImage && (
           <div

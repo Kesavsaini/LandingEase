@@ -10,7 +10,7 @@ const Feature = ({feature}) => {
       } = feature;
       return (
         <div className='h-[40rem] w-full' style={{backgroundColor:bgClr!=="none" && bgClr,backgroundImage:isBgImage ? `url(${bgSrc})`:null,backgroundSize:"cover"}}>
-           <div className={`h-full w-full flex ${!isImage && 'justify-center'}  flex-col sm:flex-row ${!imageOnLeft && "sm:flex-row-reverse"} ${!imageOnLeft && "flex-col-reverse"}`}>
+           <div className={`h-full w-full flex ${!isImage && 'justify-center'}  flex-col sm:flex-row ${!imageOnLeft && "sm:flex-row-reverse"}`}>
               {
                 isImage && (
                   <div className={`h-1/2 sm:h-full w-full sm:w-1/2  flex justify-center items-center`}>

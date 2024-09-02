@@ -11,7 +11,7 @@ const FormPreview = ({ formSection, isMobileView }) => {
 
   return (
     <div
-      className={`w-full ${isMobileView ? "h-[36rem]":"h-[28rem]"} xxs:p-4 flex justify-center items-center`}
+      className={`w-full ${isMobileView ? "min-h-[36rem]":"min-h-[28rem]"} xxs:p-4 flex justify-center items-center`}
       style={{ backgroundColor: bgClr !== "none" && bgClr }}
     >
       
