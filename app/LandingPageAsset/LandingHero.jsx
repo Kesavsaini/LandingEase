@@ -3,6 +3,7 @@ import React from "react";
 import dashboardSs from '../../public/dashboardSs.png'
 import { Button } from "@/components/ui/button";
 import HeroButton from "./HeroButton";
+import LandingEaseSvg from "../../public/LandingEaseSvg.svg"
 
 const LandingHero = () => {
   return (
@@ -10,8 +11,17 @@ const LandingHero = () => {
       <div className="max-w-screen min-h-screen mx-auto px-4 sm:px-6 relative overflow-x-hidden landingGradient text-black bg-repeat" style={{backgroundImage:"url(https://www.transparentpng.com/download/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png)"}}>
         {/* Illustration behind hero content */}
         {/* Hero content */}
-        <div className='text-2xl sm:text-4xl font-extrabold absolute top-4 sm:top-6 sm:left-8'>Landing
+        <div className="flex gap-2 items-center absolute top-4 sm:top-6 sm:left-8">
+          <Image
+            src={LandingEaseSvg}
+            alt="Landing Ease SVG"
+            width={50}
+            height={50}
+            className="object-contain sm:object-scale-down"
+          />
+        <div className='text-2xl sm:text-4xl font-extrabold  text-black'>Landing
         <span className='text-orange-500 text-base sm:text-2xl font-extrabold'>Ease</span>
+        </div>
         </div>
         <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
           {/* Section header */}
